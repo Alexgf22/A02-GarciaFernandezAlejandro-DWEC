@@ -2,6 +2,18 @@ function displayResults() {
     let name = document.getElementById("nameInput").value;
     let surnames = document.getElementById("surnamesInput").value;
 
+    // Check if inputs are empty
+    if (name.trim() === "" || surnames.trim() === "") {
+        alert("Please enter a valid name and surnames.");
+        return;
+    }
+
+    // Check if inputs contain only letters
+    if (!/^[A-Za-z\s]+$/.test(name) || !/^[A-Za-z\s]+$/.test(surnames)) {
+        alert("Please enter only letters in the name and surnames.");
+        return;
+    }
+
     // Count lengths without blanks
     let totalSize = name.replace(/\s/g, '').length + surnames.replace(/\s/g, '').length;
 
