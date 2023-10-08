@@ -1,0 +1,32 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 20px; 
+}
+
+h1 {
+  color: #333333; 
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #666666; 
+  color: #FFFFFF; 
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #333333; 
+  color: #FFFFFF; 
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
