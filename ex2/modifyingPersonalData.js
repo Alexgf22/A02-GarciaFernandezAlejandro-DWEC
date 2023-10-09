@@ -9,7 +9,7 @@ function displayResults() {
     }
 
     // Check if inputs contain only letters
-    if (!/^[A-Za-z\s]+$/.test(name) || !/^[A-Za-z\s]+$/.test(surnames)) {
+    if (!/^[A-Za-z\s]+$/.test(name) || !/^[A-Za-z\s]+$/.test(surnames.replace(/\s/g, ''))) {
         alert("Please enter only letters in the name and surnames.");
         return;
     }
