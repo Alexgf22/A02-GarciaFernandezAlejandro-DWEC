@@ -45,11 +45,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Function to add a new team
-    function addTeam(position, team, points) {
+    function addTeam(team, points) {
         var table = document.querySelector('.my-table');
         var rows = table.getElementsByTagName('tr');
         var existingTeam = false;
-
+    
         // Check if the team already exists in the table
         for (var i = 1; i < rows.length; i++) {
             var cells = rows[i].getElementsByTagName('td');
@@ -59,27 +59,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             }
         }
-
+    
         if (!existingTeam) {
             // Create a new row
             var row = document.createElement('tr');
-
+    
             // Add cells with the team data
-            var data = [position, team, points];
+            var data = [0, team, points]; // La posición se inicializa a 0
             for (var i = 0; i < data.length; i++) {
                 var cell = document.createElement('td');
                 cell.appendChild(document.createTextNode(data[i]));
                 row.appendChild(cell);
             }
-
-            // Insert the new row at the appropriate position
-            if (position <= rows.length) {
-                table.insertBefore(row, rows[position]);
-            } else {
+    
+            // Insert the new row at the appropriate position based on points
+            for (var i = 1; i < rows.length; i++) {
+                var cells = rows[i].getElementsByTagName('td');
+                if (parseInt(cells[2].textContent) < parseInt(points)) {
+                    table.insertBefore(row, rows[i]);
+                    break;
+                }
+            }
+    
+            // Si el equipo tiene menos puntos que todos los demás, se agrega al final
+            if (!row.parentNode) {
                 table.appendChild(row);
             }
         }
-
+    
         // Reorder rows based on points
         var rowsArray = Array.prototype.slice.call(rows, 1);
         rowsArray.sort(function(a, b) {
@@ -90,6 +97,10 @@ document.addEventListener('DOMContentLoaded', function() {
             table.appendChild(rowsArray[i]);
         }
     }
+    
+
+
+
 
     // Call the function to create the table when the page loads
     createTable();
