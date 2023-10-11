@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var table = document.querySelector('.my-table');
         var rows = table.getElementsByTagName('tr');
         var existingTeam = false;
-    
+
         // Check if the team already exists in the table
         for (var i = 1; i < rows.length; i++) {
             var cells = rows[i].getElementsByTagName('td');
@@ -59,11 +59,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             }
         }
-    
+
         if (!existingTeam) {
             // Create a new row
             var row = document.createElement('tr');
-    
+
             // Add cells with the team data
             var data = [0, team, points]; // La posición se inicializa a 0
             for (var i = 0; i < data.length; i++) {
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 cell.appendChild(document.createTextNode(data[i]));
                 row.appendChild(cell);
             }
-    
+
             // Insert the new row at the appropriate position based on points
             for (var i = 1; i < rows.length; i++) {
                 var cells = rows[i].getElementsByTagName('td');
@@ -80,13 +80,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
                 }
             }
-    
+
             // Si el equipo tiene menos puntos que todos los demás, se agrega al final
             if (!row.parentNode) {
                 table.appendChild(row);
             }
         }
-    
+
         // Reorder rows based on points
         var rowsArray = Array.prototype.slice.call(rows, 1);
         rowsArray.sort(function(a, b) {
@@ -97,10 +97,6 @@ document.addEventListener('DOMContentLoaded', function() {
             table.appendChild(rowsArray[i]);
         }
     }
-    
-
-
-
 
     // Call the function to create the table when the page loads
     createTable();
@@ -108,14 +104,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Form event
     document.getElementById('teamForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        var position = parseInt(document.getElementById('position').value);
         var team = document.getElementById('team').value;
         var points = document.getElementById('points').value;
 
-        addTeam(position, team, points);
+        addTeam(team, points);
 
         // Clear the form
-        document.getElementById('position').value = '';
         document.getElementById('team').value = '';
         document.getElementById('points').value = '';
     });
