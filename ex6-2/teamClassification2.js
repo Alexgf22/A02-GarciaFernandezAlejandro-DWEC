@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var row = document.createElement('tr');
 
             // Add cells with the team data
-            var data = [0, team, points]; // La posición se inicializa a 0
+            var data = [0, team, points]; // Position is initialized to 0
             for (var i = 0; i < data.length; i++) {
                 var cell = document.createElement('td');
                 cell.appendChild(document.createTextNode(data[i]));
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            // Si el equipo tiene menos puntos que todos los demás, se agrega al final
+            // If the team has less points than everyone else, it is added at the end
             if (!row.parentNode) {
                 table.appendChild(row);
             }
